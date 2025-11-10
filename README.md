@@ -82,10 +82,6 @@ Create a new database (e.g., ecommerce).
 
 Import the ecommerce.sql file located in the database folder.
 
-Run the Project
-Open your browser and visit:
-
-http://localhost/E%20Commerce/home.html
 
 
 💡 Future Enhancements
