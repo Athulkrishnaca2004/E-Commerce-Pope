@@ -1,0 +1,212 @@
+/* 
+
+================
+COLORS REFERENCE
+================
+
+Background: #2a3a3f
+Background: rgba(42,58,63,0.8)
+Red color: #ec5552
+White color: #f6f6f6
+Black color: #3b3b3b
+
+
+*/
+
+
+/* GLOBAL STYLES */
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat:200,400,400i,700');
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+
+
+.circle {
+  --circle-size: 40px;
+  position: fixed;
+  height: var(--circle-size);
+  width: var(--circle-size);
+  border: 2px solid rgb(199, 93, 223);
+  border-radius: 100%;
+  top: calc(var(--circle-size) / 2 * -1);
+  left: calc(var(--circle-size) / 2 * -1);
+  pointer-events: none;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  line-height: 1.375em;
+  color: #3b3b3b;
+  margin: 0;
+  padding: 0;
+}
+
+/* NAV BAR */
+.navbar-inverse {
+  background: #000;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.navbar-brand img {
+  max-width: 35px;
+}
+
+@media only screen and (min-width: 768px) {
+  .navbar-brand img {
+    max-width: 50px;
+  }
+}
+
+.navbar-inverse .navbar-nav nav-link {
+  color: #f6f6f6;
+}
+
+/* COVER PAGE */
+
+html, body {
+  height: 100%;
+}
+
+.cover, .bg {
+  height: 100%;
+  width: 100%;
+}
+
+
+.bg {
+  background: linear-gradient(rgba(42, 58, 63, 0.8), rgba(42, 58, 63, 0.8)),
+    url('https://res.cloudinary.com/ldanieltvr/image/upload/v1492818435/folio/background.jpg');
+  background-size: cover;
+  background-position: 75%;
+}
+
+.cover {
+  color: #f6f6f6;
+  display: flex;
+  justify-items: center;
+  align-items: center;
+}
+
+.landing-page--message {
+  text-align: center;
+  padding: 0 10%;
+}
+
+.landing-page--message h1 {
+  font-size: 40px;
+  letter-spacing: -1px;
+}
+
+@media only screen and (min-width: 768px) {
+  .landing-page--message h1 {
+    font-size: 70px;
+    letter-spacing: -3px;
+  }
+}
+
+.landing-page--message .btn-outline-danger {
+  color: white;
+  border-width: 5px;
+}
+
+.landing-page--message a:link,
+.landing-page--message a:hover,
+.landing-page--message a:visited,
+.landing-page--message a:active {
+  color: #f6f6f6;
+}
+
+.landing-page--message a:hover {
+  text-decoration: none;
+}
+
+/* SERVICES PAGE */
+
+.dev {
+  border-top: 5px solid #ec5552;
+  border-bottom: 5px solid #ec5552;
+  border-left: 10px solid #ec5552;
+  border-right: 10px solid #ec5552;
+  padding: 5%;
+  width: inherit;
+}
+
+.dev h1 {
+  font-weight: lighter;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
+
+.dev h1 strong {
+  color: #ec5552;
+  font-weight: 700;
+}
+
+#first-page {
+  border-top: 10px solid #ec5552;
+}
+
+/* WORK PAGE */
+
+.work h2 {
+  font: lighter 2em "Montserrat", sans-serif;
+  margin: .5em 0 0;
+}
+
+.work h3 {
+  font: italic 1em "Montserrat", sans-serif;
+  margin: 1em 0;
+}
+
+.work p {
+  height: 10em;
+}
+
+/* HIRE PAGE */
+
+#hire-me {
+  background: #ec5552;
+  color: #f6f6f6;
+  margin: 0;
+  padding: 4em 0 4em;
+  text-align: center;
+  width: inherit;
+}
+
+#hire-me h1 {
+  margin: 0 0 1em;
+}
+
+#hire-me p {
+  width: 60%;
+  margin: 0 auto 2em;
+}
+
+button.btn.btn-lg.btn-white {
+  border: 5px solid #f6f6f6;
+  background-color: #ec5552;
+  color: #f6f6f6;
+}
+
+button.btn.btn-lg.btn-white:hover {
+  background: #f6f6f6;
+  color: #ec5552;
+  transition: all 0.2s ease-in;
+}
+
+button.btn.btn-lg.btn-white:focus {
+  box-shadow: none;
+}
+
+/* FOOTER */
+footer {
+  background: #3b3b3b;
+  color: #f6f6f6;
+}

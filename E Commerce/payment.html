@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Page</title>
+    <style>
+        /* Base styles for the body */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        /* Container styles */
+        .payment-container {
+            background-color: rgb(196, 206, 210);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+        }
+
+        /* Heading styles */
+        h1 {
+            margin-bottom: 1.5rem;
+        }
+
+        /* Form group styles */
+        .form-group {
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+
+        /* Label styles */
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Input and textarea styles */
+        input[type="text"], input[type="tel"], input[type="email"], textarea {
+            width: 95%;
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        /* Button styles */
+        button {
+            width: 100%;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Error message styles */
+        .error-message {
+            color: red;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        /* Transition effect for form container */
+        .payment-container {
+            transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="payment-container">
+        <h1>Payment Information</h1>
+        <form id="paymentForm" action="http://localhost/E%20Commerce/login/payment.php" method="post">
+            <div class="form-group">
+                <label for="bankName">Bank Name</label>
+                <input type="text" id="bankName" name="bankName" required>
+            </div>
+            <div class="form-group">
+                <label for="cardNumber">Card Number</label>
+                <input type="text" id="cardNumber" name="cardNumber" required>
+            </div>
+            <div class="form-group">
+                <label for="expiryDate">Expiry Date</label>
+                <input type="date" id="expiryDate" name="expiryDate" placeholder="MM/YY" required>
+            </div>
+            <div class="form-group">
+                <label for="cvv">CVV</label>
+                <input type="text" id="cvv" name="cvv" required>
+            </div>
+            <div class="form-group">
+                <label for="upi">UPI</label>
+                <input type="text" id="upi" name="upi" required>
+            </div>
+            <div class="form-group">
+                <label for="mobile number">Mobile Number</label>
+                <input type="text" id="mobile number" name="mobileNumber" required>
+            </div>
+            <div class="form-group">
+                <label for="otp">OTP</label>
+                <input type="text" id="otp" name="otp" required>&nbsp;
+                <button id="generateOtpButton" type="button">Generate OTP</button>
+            </div>
+            <button type="submit">Confirm Order</button>
+        </form>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const paymentForm = document.getElementById("paymentForm");
+
+            // Function to generate a random OTP
+            function generateOTP() {
+                const digits = '0123456789';
+                let OTP = '';
+                for (let i = 0; i < 6; i++) {
+                    OTP += digits[Math.floor(Math.random() * 10)];
+                }
+                return OTP;
+            }
+
+            // Event listener for OTP generation button
+            const generateOTPButton = document.getElementById('generateOtpButton');
+            generateOTPButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                const otpInput = document.getElementById('otp');
+                otpInput.value = generateOTP();
+            });
+
+            // Event listener for form submission
+            paymentForm.addEventListener("submit", function(event) {
+                event.preventDefault();
+
+                // Retrieve form values
+                const bankName = document.getElementById("bankName").value;
+                const cardNumber = document.getElementById("cardNumber").value;
+                const expiryDate = document.getElementById("expiryDate").value;
+                const cvv = document.getElementById("cvv").value;
+                const upi = document.getElementById("upi").value;
+                const otp = document.getElementById("otp").value;
+
+                // Simple validation (you can add more comprehensive validation)
+                if (bankName === "" || cardNumber === "" || expiryDate === "" || cvv === "" || upi === "" || otp === "") {
+                    alert("Please fill out all fields and generate OTP.");
+                    return;
+                }
+
+                // Confirmation dialog
+                if (confirm("Are you sure you want to place the order?")) {
+                    // Submit the form
+                    paymentForm.submit();
+                } else {
+                    // Optionally handle cancellation
+                    console.log("Order not confirmed.");
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+
+    <style>
+        /* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+}
+
+header {
+    text-align: center;
+    padding: 1rem;
+    background-color: #7eb4f6;
+    color: white;
+}
+
+.container {
+    display: flex;
+}
+
+.sidebar {
+    width: 200px;
+    background-color: #333;
+    color: white;
+    height: 200vh;
+    padding-top: 20px;
+}
+
+.sidebar nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar nav ul li {
+    padding: 10px 20px;
+}
+
+.sidebar nav ul li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+}
+
+.sidebar nav ul li a:hover {
+    background-color: #575757;
+}
+
+main {
+    flex-grow: 1;
+    padding: 20px;
+}
+#content {
+    max-width: 700px;
+    margin: auto;
+}
+
+.product {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    margin: 1rem 0;
+}
+
+.product img {
+    max-width: 100%;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+}
+
+.product h3 {
+    margin-top: 0;
+}
+
+.product p {
+    margin-bottom: 0.5rem;
+}
+
+.product .mrp {
+    text-decoration: line-through;
+    color: red;
+}
+
+.product .offer {
+    font-weight: bold;
+    color: green;
+}
+
+
+main h2 {
+    margin-top: 0;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+button {
+    width: 100%;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #007BFF;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.error-message {
+    color: red;
+    margin-top: 1rem;
+    display: none;
+}
+
+/* Styles for Product Display */
+.product-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+}
+
+.product-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 300px;
+}
+
+.product-card img {
+    width: 80%;
+    height: auto;
+}
+
+.product-info {
+    padding: 15px;
+}
+
+.product-info h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.product-info p {
+    margin: 5px 0;
+    color: #666;
+}
+
+.product-price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.product-price span {
+    font-size: 1rem;
+    color: #333;
+}
+
+.product-price .offer-price {
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>WELCOME TO POPE PROFESSIONAL</h1>
+</header>
+
+<div class="circle"></div>
+
+<div class="container">
+    <aside class="sidebar">
+        <nav>
+            <ul>
+                <li id="profile">
+                    <a href="#"><i class="fas fa-user"></i> Profile</a>
+                    <div id="profileContent" style="display: none;">
+                        <h2>Profile</h2>
+                        <form id="profileForm" action="/login/profile.php" method="post">
+                            <div class="form-group">
+                                <label for="fullName">Full Nam</label>
+                                <input type="text" id="fullName" name="fullName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="mobileNumber">Mobile Number</label>
+                                <input type="tel" id="mobileNumber" name="mobileNumber" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="emailAddress">Email Address</label>
+                                <input type="email" id="emailAddress" name="emailAddress" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="deliveryAddress">Delivery Address</label>
+                                <textarea id="deliveryAddress" name="deliveryAddress" required></textarea>
+                            </div>
+                            <button type="submit">Save</button>&nbsp;
+                        </form>
+                        
+                    </div>
+                </li>
+                <li id="category">
+                    <a href="#"><i class="fas fa-th"></i> Category</a>
+                    <ul class="sub-menu">
+                        <li id="amplifier">
+                            <a href="#"><i class="fas fa-microphone"></i> Amplifier</a>
+                            <div id="amplifierContent" style="display: none;">
+                                <h2>Amplifiers</h2>
+                                <div class="product">
+                                    <img src="images/pope amplifier.png" alt="Amplifier Image">
+                                    <h3>Pope Amplifier 4 Channel</h3>
+                                    <p>High-quality amplifier with excellent sound output and durability.</p>
+                                    <p class="mrp">MRP: 6000</p>
+                                    <p class="offer">Offer Price: 5100</p>
+                                    <button class="buy-now">Buy Now</button>&nbsp;
+                                    <button class="add-to-cart">Add to Cart</button>
+                                </div>
+                                <div class="product">
+                                    <img src="images/amplifier1.png" alt="Amplifier Image">
+                                    <h3>Pope Amplifier 8 Channel</h3>
+                                    <p>State-of-the-art amplifier with premium features and sleek design.</p>
+                                    <p class="mrp">MRP: 12000</p>
+                                    <p class="offer">Offer Price: 10000</p>
+                                    <button class="buy-now">Buy Now</button>&nbsp;
+                                    <button class="add-to-cart">Add to Cart</button>
+                                </div>
+                            </div>
+                        </li>
+                        <li id="speaker">
+                            <a href="#"><i class="fas fa-volume-up"></i> Speaker</a>
+                            <div id="speakerContent" style="display: none;">
+                                <h2>Speakers</h2>
+                                <div class="product">
+                                    <img src="images/pope speaker.png" alt="Speaker Image">
+                                    <h3>Pope Single Speaker</h3>
+                                    <p>High-quality speaker with excellent sound output and durability.</p>
+                                    <p class="mrp">MRP: 3000</p>
+                                    <p class="offer">Offer Price: 2600</p>
+                                    <button class="buy-now">Buy Now</button>&nbsp;
+                                    <button class="add-to-cart">Add to Cart</button>
+                                </div>
+                                <div class="product">
+                                    <img src="pope speaker1.png" alt="Speaker Image">
+                                    <h3>Pope Dual Speaker</h3>
+                                    <p>State-of-the-art speaker with premium features and sleek design.</p>
+                                    <p class="mrp">MRP: 9000</p>
+                                    <p class="offer">Offer Price: 7600</p>
+                                    <button class="buy-now">Buy Now</button>&nbsp;
+                                    <button class="add-to-cart">Add to Cart</button>
+                                </div>
+                            </div>
+                        </li>
+                        <li id="home-theatre">
+                            <a href="#"><i class="fas fa-video"></i> Home Theatre</a>
+                            <div id="homeTheatreContent" style="display: none;">
+                                <h2>Home Theatre</h2>
+                                <div class="product">
+                                    <img src="home theatre1.jpg" alt="Home Theatre Image">
+                                    <h3>Pope 4 Way Home Theatre</h3>
+                                    <p>Immersive home theatre experience with surround sound and high-resolution visuals.</p>
+                                    <p class="mrp">MRP: 10000</p>
+                                    <p class="offer">Offer Price: 8000</p>
+                                    <button class="buy-now">Buy Now</button>&nbsp;
+                                    <button class="add-to-cart">Add to Cart</button>
+                                </div>
+                                <div class="product">
+                                    <img src="images/home theatre2.jpg" alt="Home Theatre Image">
+                                    <h3>Pope 8 Way Tower Home Theatre</h3>
+                                    <p>Premium home theatre system with advanced audio processing and Tower Design.</p>
+                                    <p class="mrp">MRP: 19000</p>
+                                    <p class="offer">Offer Price: 16000</p>
+                                    <button class="buy-now">Buy Now</button>&nbsp;
+                                    <button class="add-to-cart">Add to Cart</button>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="#" id="cart"><i class="fas fa-shopping-cart"></i> Cart</a></li>
+                <li><a href="#" id="orders"><i class="fas fa-list"></i> Orders</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main>
+        <section id="content">
+            <h2></h2>
+            <p></p>
+            <div class="product-slider">
+                <div class="product" id="product-amplifier">
+                    <img src="images/pope professional1.png" width="800" height="400" alt="Amplifier">
+                </div>
+                <div class="product" id="product-speaker">
+                    <img src="images/pope professional.png" width="800" height="400" alt="Speaker">
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+    const profileLink = document.getElementById('profile');
+    const categoryLink = document.getElementById('category');
+    const cartLink = document.getElementById('cart');
+    const ordersLink = document.getElementById('orders');
+    const contentSection = document.getElementById('content');
+    const subMenu = categoryLink.querySelector('.sub-menu');
+    const amplifierLink = document.getElementById('amplifier');
+    const speakerLink = document.getElementById('speaker');
+    const homeTheatreLink = document.querySelector('#category li:nth-child(3) a');
+    let cart = [];
+
+    profileLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        contentSection.innerHTML = `
+            <h2>Profile</h2>
+           <form id="profileForm" action="http://localhost/E%20Commerce/login/profile.php" method="post">
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" name="fullName" required>
+                </div>
+                <div class="form-group">
+                    <label for="mobileNumber">Mobile Number</label>
+                    <input type="tel" id="mobileNumber" name="mobileNumber" required>
+                </div>
+                <div class="form-group">
+                    <label for="emailAddress">Email Address</label>
+                    <input type="email" id="emailAddress" name="emailAddress" required>
+                </div>
+                <div class="form-group">
+                    <label for="deliveryAddress">Delivery Address</label>
+                    <textarea id="deliveryAddress" name="deliveryAddress" required></textarea>
+                </div>
+                <button type="submit">Save</button>&nbsp;
+            </form>
+                        <button id="logoutBtn">Logout</button>
+
+            
+        `;
+        
+        const logoutBtn = document.getElementById('logoutBtn');
+        logoutBtn.addEventListener('click', () => {
+            // Redirect to login page on logout
+            window.location.href = 'http://localhost/E%20Commerce/login/login.php';
+        });
+    });
+
+    categoryLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        // Toggle display of sub-menu
+        subMenu.style.display = subMenu.style.display === 'block' ? 'none' : 'block';
+    });
+
+    cartLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        displayCart();
+    });
+
+    ordersLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        contentSection.innerHTML = `
+            <h2>Orders</h2>
+            <p>This is your orders page.</p>
+        `;
+    });
+    
+
+    function redirectToProductPage() {
+        // Check if the product is being added from the cart
+        const isFromCart = window.location.pathname.includes('cart.html');
+
+        // Redirect to product details page with product name as query parameter
+        if (isFromCart) {
+            window.location.href = 'product.html';
+        } else {
+            // Redirect to cart page with product name as query parameter
+            window.location.href = 'product.html';
+        }
+    }
+
+
+    function setupBuyNowButtons() {
+        const buyNowButtons = document.querySelectorAll('.buy-now');
+        buyNowButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                const productName = e.target.parentNode.querySelector('h3').innerText;
+                redirectToProductPage(productName);
+            });
+        });
+
+        const addToCartButtons = document.querySelectorAll('.add-to-cart');
+        addToCartButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                const product = e.target.parentNode;
+                const productName = product.querySelector('h3').innerText;
+                const productImage = product.querySelector('img').src;
+                const productPrice = parseFloat(product.querySelector('.offer').innerText.replace('Offer Price:', '').trim());
+                const productDetails = product.querySelector('p').innerText;
+
+                cart.push({ 
+                    name: productName, 
+                    image: productImage,
+                    price: productPrice,
+                    details: productDetails
+                });
+                alert(`${productName} added to cart.`);
+            });
+        });
+    }
+
+    function displayCart() {
+        let cartHTML = '<h2>Cart</h2>';
+        let total = 0;
+    
+        if (cart.length === 0) {
+            cartHTML += '<p>Your cart is empty.</p>';
+        } else {
+            cart.forEach(item => {
+                cartHTML += `
+                    <div class="cart-item">
+                        <img src="${item.image}" alt="${item.name}">
+                        <div class="cart-details">
+                            <h3>${item.name}</h3>
+                            <p>${item.details}</p>
+                            <p>Price: ${item.price.toFixed(2)}</p>
+                        </div>
+                    </div>
+                `;
+                total += item.price;
+            });
+            cartHTML += `<p class="total">Total: ${total.toFixed(2)}</p>`;
+            // Add Buy Now button
+            cartHTML += `<button id="buyNowBtn">Buy Now</button>`;
+        }
+    
+        contentSection.innerHTML = cartHTML;
+    
+        // Add event listener for Buy Now button
+        const buyNowBtn = document.getElementById('buyNowBtn');
+        if (buyNowBtn) {
+            buyNowBtn.addEventListener('click', () => {
+                // Perform action when Buy Now button is clicked
+                // For example, you can redirect to a checkout page
+                alert('Buy Now clicked. Redirecting to summery order...');
+                // Replace the URL with the actual checkout page URL
+                window.location.href = 'product.html';
+            });
+        }
+    }
+    
+
+    amplifierLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        contentSection.innerHTML = `
+            <h2>Amplifiers</h2>
+            <div class="product">
+                <img src="images/pope amplifier.png" alt="Amplifier Image">
+                <h3>Pope Amplifier 4 Channel</h3>
+                <p>High-quality amplifier with excellent sound output and durability.</p>
+                <p class="mrp">MRP:6000</p>
+                <p class="offer">Offer Price:5100</p>
+                <button class="buy-now">Buy Now</button>&nbsp;
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="images/amplifier1.png" alt="Amplifier Image">
+                <h3>Pope Amplifier 8 Channel</h3>
+                <p>State-of-the-art amplifier with premium features and sleek design.</p>
+                <p class="mrp">MRP:12000</p>
+                <p class="offer">Offer Price:10000</p>
+                <button class="buy-now">Buy Now</button>&nbsp;
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+        `;
+        setupBuyNowButtons();
+    });
+
+    speakerLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        contentSection.innerHTML = `
+            <h2>Speakers</h2>
+            <div class="product">
+                <img src="images/pope speaker.png" alt="Speaker Image">
+                <h3>Pope Single Speaker </h3>
+                <p>High-quality speaker with excellent sound output and durability.</p>
+                <p class="mrp">MRP:3000</p>
+                <p class="offer">Offer Price:2600</p>
+                <button class="buy-now">Buy Now</button>&nbsp;
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="images/pope speaker1.png" alt="Speaker Image">
+                <h3>Pope Dual Speaker </h3>
+                <p>State-of-the-art speaker with premium features and sleek design.</p>
+                <p class="mrp">MRP:9000</p>
+                <p class="offer">Offer Price:7600</p>
+                <button class="buy-now">Buy Now</button>&nbsp;
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+        `;
+        setupBuyNowButtons();
+    });
+
+    homeTheatreLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        contentSection.innerHTML = `
+            <h2>Home Theatre</h2>
+            <div class="product">
+                <img src="images/home theatre1.jpg" alt="Home Theatre Image">
+                <h3>Pope 4 Way Home Theatre </h3>
+                <p>Immersive home theatre experience with surround sound and high-resolution visuals.</p>
+                <p class="mrp">MRP:10000</p>
+                <p class="offer">Offer Price:8000</p>
+                <button class="buy-now">Buy Now</button>&nbsp;
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="images/home theatre2.jpg" alt="Home Theatre Image">
+                <h3>Pope 8 Way Tower Home Theatre</h3>
+                <p>Premium home theatre system with advanced audio processing and Tower Design.</p>
+                <p class="mrp">MRP:19000</p>
+                <p class="offer">Offer Price:16000</p>
+                <button class="buy-now">Buy Now</button>&nbsp;
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+        `;
+        setupBuyNowButtons();
+    });
+});
+</script>
+</body>
+</html>

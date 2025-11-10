@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cash On Delivery</title>
+    <style>
+        /* Base styles for the body */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        /* Container styles */
+        .cod-container {
+            background-color: rgb(196, 206, 210);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+        }
+
+        /* Heading styles */
+        h1 {
+            margin-bottom: 1.5rem;
+        }
+
+        /* Form group styles */
+        .form-group {
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+
+        /* Label styles */
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Input and textarea styles */
+        input[type="text"], input[type="tel"], input[type="email"], textarea {
+            width: 95%;
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        /* Button styles */
+        button {
+            width: 100%;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Error message styles */
+        .error-message {
+            color: red;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        /* Transition effect for form container */
+        .cod-container {
+            transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="cod-container">
+        <h1>Cash On Delivery</h1>
+        <form id="codForm" action="http://localhost/E%20Commerce/login/cod.php" method="post">
+            <div class="form-group">
+                <label for="Address">Address</label>
+                <textarea id="Address" name="Address" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="emailAddress">Email Address</label>
+                <input type="text" id="emailAddress" name="emailAddress" required>
+            </div>
+            <div class="form-group">
+                <label for="mobileNumber">Mobile Number</label>
+                <input type="text" id="mobileNumber" name="mobileNumber" required>
+            </div>
+            <div class="form-group">
+                <label for="otp">Otp</label>
+                <input type="text" id="otp" name="otp" required>
+                <button id="generateOtpButton" type="button">Generate OTP</button>
+            </div>
+            <button type="submit">Confirm Order</button>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const codForm = document.getElementById("codForm");
+
+            // Function to generate a random OTP
+            function generateOTP() {
+                const digits = '0123456789';
+                let OTP = '';
+                for (let i = 0; i < 6; i++) {
+                    OTP += digits[Math.floor(Math.random() * 10)];
+                }
+                return OTP;
+            }
+
+            // Event listener for OTP generation button
+            const generateOTPButton = document.getElementById('generateOtpButton');
+            generateOTPButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                const otpInput = document.getElementById('otp');
+                otpInput.value = generateOTP();
+            });
+
+            // Event listener for form submission
+            codForm.addEventListener("submit", function(event) {
+                // No need to prevent default here as the form will be submitted to PHP
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Order Placed Animation</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    margin: 0;
+  }
+  
+  .container {
+    text-align: center;
+  }
+  
+  .confirmation {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    animation: slideIn 0.5s ease forwards;
+    opacity: 0;
+  }
+  
+  .confirmation.show {
+    animation: slideIn 0.5s ease forwards, fadeOut 2s linear forwards 0.5s;
+    opacity: 1;
+  }
+  
+  .icon {
+    width: 80px;
+    height: 80px;
+    background-color: #4CAF50;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 15px;
+  }
+  
+  .icon img {
+    width: 50px;
+    height: 50px;
+  }
+  
+  @keyframes slideIn {
+    from {
+      transform: translateY(-100px);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+  
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="confirmation">
+    <div class="icon">
+      <img src="images/checkmark.png" alt="Checkmark">
+    </div>
+    <h1>Order Placed Successfully!</h1>
+    <p>Your order will be delivered soon.</p>
+  </div>
+</div>
+<script >
+  document.addEventListener('DOMContentLoaded', function() {
+    const confirmationBox = document.querySelector('.confirmation');
+  
+    // Simulate order placed event
+    setTimeout(function() {
+      confirmationBox.classList.add('show');
+    }, 100); // Adjust delay as needed
+
+      // Redirect to home.html after 2 seconds
+      setTimeout(function() {
+      window.location.href = 'home.html';
+    }, 2000); // Adjust delay as needed
+  });
+  
+
+
+</script>
+</body>
+</html>
